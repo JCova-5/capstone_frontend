@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import '../App.css';
 import Header from './Header'
-import SignInForm from './SignInForm';
+import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm'
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
       case "login":
         return <LoginForm handleLogin={handleLogin}/>
       default:
-        return <SignInForm handleLogin={handleLogin}/>
+        return <SignUpForm handleLogin={handleLogin}/>
     }
   }
   return (

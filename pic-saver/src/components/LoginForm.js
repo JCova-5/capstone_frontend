@@ -41,11 +41,11 @@ function LoginForm(props){
             <h1>Log In</h1>
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
-                    <label>Username</label>
+                    <label>Username: </label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
                 </div>
                 <div className="field">
-                    <label>Password</label>
+                    <label>Password: </label>
                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
                 </div>
                 
