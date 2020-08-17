@@ -1,49 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SongForm from './SongForm'
 import '../App.css';
+import CreateForm from './createForm'
+import apiUrl from './apiConfig'
 
 
-const NewSong = ({setSong}) => {
-  const [input, setInput] = useState({ post: "", caption: ""});
-//   const [item, setItem] = useState(null);
+const NewPost = (props) => {
 
-  const handleChange = (event) => {
-    console.log("event", event.target.name, event.target.value);
-    setInput({
-      ...input,
-      [event.target.name]: event.target.value,
-    });
-  };
+    const [post, setPost] = useState("")
+    const [caption, setNewCaption] = useState("")
+    const [user, setUser] = useState({})
 
-  const handleSubmit = (event) => {
-  
-    event.preventDefault();
-    console.log("handleSubmit");
-    axios({
-      url: `http://localhost:3000/posts`,
-      method: "POST",
-      data: input,
-    })
-      .then((res) => {
-          setSong({ createdItem: res.data })
+    const handlePostChange = (evt) => {
+        setPost(evt.target.value)
+    }
 
-        //   props.history.push('/songs')
+    const handleCaptionChange = (evt) => {
+        setNewCaption(evt.target.value)
+    }
+
+    
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault()
+        fetch(`${apiUrl}/posts`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                post,
+                caption
+            })
         })
-      .catch(console.error);
-      event.target.reset()
+        .then(resp => resp.json())
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            handleUser(data.user)
+        })
+        setPost("")
+        setNewCaption("")
+    }
+
+    const handleUser = (user) => {
+        setUser(user)
+    }
+
+
+    return (
+        <div className='postForm'> 
+        <h4 className="">New Post</h4>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Post</label>
+                <input name="post" value={post} onChange={handlePostChange} type="text" placeholder="post"/>
+            </div>
+            <div>
+                <label>Caption</label>
+                <input name="caption" value={caption} onChange={handleCaptionChange} type="text" placeholder="caption"/>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+            
+            
+
+        </div>
+    );
   };
-
-  return (
-    <div className='newsong'> 
-    <h4>New Post</h4>
-    <SongForm 
-        // item={input}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-    />
-    </div>
-  );
-};
-
-export default NewSong;
+  export default NewPost;

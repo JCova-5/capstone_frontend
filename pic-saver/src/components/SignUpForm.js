@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function SignUp(props) {
+function SignInForm(props) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [profile_img, setProfile_img] = useState("")
@@ -33,7 +33,7 @@ function SignUp(props) {
         })
         .then(resp => resp.json())
         .then(data => {
-            // localStorage.setItem("token", data.jwt)
+            localStorage.setItem("token", data.jwt)
             props.handleLogin(data.user)
         })
         setUsername("")
@@ -41,22 +41,21 @@ function SignUp(props) {
         setProfile_img("")
     }
     
-    
     return(
         <div>
             <h1>Sign Up</h1>
             <form className="ui form" onSubmit={handleSubmit}>
                 <div className="field">
-                    <label>Username: </label>
+                    <label>Username</label>
                     <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
                 </div>
                 <div className="field">
-                    <label>Password: </label>
+                    <label>Password</label>
                     <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
                 </div>
                 <div className="field">
-                    <label>Profile Photo: </label>
-                    <input value={profile_img} onChange={handleProfile_imgChange} type="profile_img" placeholder="profile_img"/>
+                    <label>Profile_img</label>
+                    <input value={profile_img} onChange={handleProfile_imgChange} type="text" placeholder="add avatar"/>
                 </div>
                 
                 <button className="ui button" type="submit">Submit</button>
@@ -65,4 +64,4 @@ function SignUp(props) {
     )
 }
 
-export default SignUp
+export default SignInForm;

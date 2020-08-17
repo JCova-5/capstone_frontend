@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CreatePost from './CreatePost'
 import axios from "axios";
 import apiUrl from  "./apiConfig"
 
@@ -7,6 +8,7 @@ import apiUrl from  "./apiConfig"
 const Feed = () => {
   console.log('post')
   const [post, setPost] = useState([]);
+  const [newPost, setNewPost] = useState(null);
   
 
 
@@ -42,6 +44,9 @@ const Feed = () => {
         <div className="newPost">
         <h4>Feed</h4>
             <ul className="feedPost">{postArr}</ul>
+        </div>
+        <div className="newPost">
+          <CreatePost/>
         </div>
     </>
   );
