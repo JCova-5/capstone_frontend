@@ -13,7 +13,7 @@ const Nav = () => {
     return (
         <nav>
             <NavLink to='/home'>Home</NavLink>
-            {localStorage.length > 0 ? <NavLink onClick={signOut}>sign out</NavLink> : <NavLink to='/'>Sign In</NavLink>}
+            {localStorage.length > 0 ? <NavLink to='/' onClick={signOut}>sign out</NavLink> : <NavLink to='/'>Sign In</NavLink>}
             
         </nav>
     )
