@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
         const token = localStorage.getItem("token")
         if(token){
-          fetch(`http://localhost:3000/users/`, {
+          fetch(`http://localhost:3000/users`, {
             headers: {
               Authorization: `Bearer ${token}`
             }

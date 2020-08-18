@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import CreatePost from './CreatePost'
+import NewPost from './CreatePost';
 import axios from "axios";
-import apiUrl from  "./apiConfig"
+import apiUrl from  "./apiConfig";
+import Nav from "./Nav";
 
 
 const Feed = () => {
   console.log('post')
   const [post, setPost] = useState([]);
-  const [newPost, setNewPost] = useState(null);
+  
   
 
 
@@ -34,6 +35,7 @@ const Feed = () => {
         <img className="feedProfileImage" src = {post.user.profile_img} alt='Profile Avatar on feed'/>
         <img className="feedPostPic" src = {post.post} alt='new post on feed'/>
         <p>{post.caption}</p>
+        <p>{post.created_at}</p>
 
     </li>
   ));
@@ -42,12 +44,17 @@ const Feed = () => {
   return (
     <>
         <div className="newPost">
+        <Nav/>
         <h4>Feed</h4>
             <ul className="feedPost">{postArr}</ul>
         </div>
         <div className="newPost">
-          <CreatePost/>
+          <NewPost/>
         </div>
+        <div className="nav">
+          
+        </div>
+        
     </>
   );
 };
