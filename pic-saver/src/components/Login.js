@@ -3,6 +3,7 @@ import '../App.css';
 import Header from './Header'
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm'
+import Footer from './Footer';
 
 function App() {
   const [user, setUser] = useState({})
@@ -46,12 +47,12 @@ function App() {
     }
   }
   return (
-    <div className="App">
+    <div className="App-login">
         <Header handleFormSwitch={handleFormSwitch}/>
         {
           renderForm()
         }
-        
+      <Footer/>
     </div>
   );
 }

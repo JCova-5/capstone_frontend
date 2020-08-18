@@ -20,7 +20,7 @@ const CreatePost = () => {
     }
 
     const handleSubmit  = async(evt) => {
-        evt.preventDefault()
+        // evt.preventDefault()
         console.log("submit data", JSON.stringify({post,
             user_id}))
         let res = await axios({
@@ -39,7 +39,7 @@ const CreatePost = () => {
 
         console.log("res",res)
         history.push('/home')
-        window.reload()
+        // window.location.reload()
     }
 
     const handleUser = (cookie) =>{
@@ -56,12 +56,14 @@ const CreatePost = () => {
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="feedForm">
                     <label>Post:</label>
+                    <br/>
                     <input name="post"value={post} onChange={handlePostChange} type="text" placeholder="post"/>
                 </div>
                 <div>
                     <label>Caption:</label>
+                    <br/>
                     <input name="caption"value={caption} onChange={handleCaptionChange} type="text" placeholder="Caption"/>
                 </div>
                 

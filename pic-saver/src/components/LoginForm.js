@@ -76,10 +76,12 @@ function LogInForm(props){
                 <form className="" onSubmit={handleSubmit}>
                     <div className="field">
                         <label>Username</label>
+                        <br/>
                         <input value={username} onChange={handleUsernameChange} type="text" placeholder="username"/>
                     </div>
                     <div className="field">
                         <label>Password</label>
+                        <br/>
                         <input value={password} onChange={handlePasswordChange} type="password" placeholder="password"/>
                     </div>
                     <button className="" type="submit">Submit</button>

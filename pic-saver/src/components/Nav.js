@@ -1,5 +1,6 @@
 import React  from 'react'
-import { NavLink, useHistory } from 'react-router-dom'
+import { Link, NavLink, useHistory } from 'react-router-dom'
+
 
 
 const Nav = () => {
@@ -17,9 +18,9 @@ const Nav = () => {
 
     return (
         <nav>
-            <NavLink to='/home'>Home</NavLink>
-            <span onClick={()=>userProf(document.cookie)}>Profile</span>
-            {localStorage.length > 0 ? <NavLink to='/' onClick={signOut}>sign out</NavLink> : <NavLink to='/'>Sign In</NavLink>}
+            <NavLink className="navLink" to='/home'>Home</NavLink>
+            <Link className="navLink"><span onClick={()=>userProf(document.cookie)}>Profile</span></Link>
+            {localStorage.length > 0 ? <NavLink className="navLink" to='/' onClick={signOut}>sign out</NavLink> : <NavLink to='/'>Sign In</NavLink>}
         </nav>
     )
     
