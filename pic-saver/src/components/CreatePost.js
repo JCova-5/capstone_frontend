@@ -3,8 +3,8 @@ import axios from 'axios';
 import apiUrl from './apiConfig';
 import { useHistory } from 'react-router-dom';
 
-const NewPost = props => {
-    const [user_id,setUser_id] = useState(0)
+const CreatePost = () => {
+    const [user_id, setUser_id] = useState(0)
     const [post, setPost] = useState("");
     const [caption ,setCaption] = useState("");
     const history = useHistory();
@@ -42,15 +42,16 @@ const NewPost = props => {
         window.reload()
     }
 
-
-    useEffect(() => {
-        handleUser(document.cookie)
-        console.log('cookie',document.cookie)
-      }, [])
-
     const handleUser = (cookie) =>{
         setUser_id(cookie)
     }
+
+    useEffect(() => {
+        handleUser(document.cookie)
+        console.log('cookie', document.cookie)
+      }, [])
+
+    
 
     return(
         <div>
@@ -70,7 +71,7 @@ const NewPost = props => {
     )
 }
 
-export default NewPost;
+export default CreatePost;
 
 
 // import React, { useState, useEffect } from "react";

@@ -4,12 +4,13 @@ import NewPost from './CreatePost';
 import axios from "axios";
 import apiUrl from  "./apiConfig";
 import Nav from "./Nav";
+import {useHistory} from 'react-router-dom'
 
 
 const Feed = () => {
   console.log('post')
   const [post, setPost] = useState([]);
-  
+  const history = useHistory()
   
 
 
@@ -17,7 +18,7 @@ const Feed = () => {
     const makeApiCall = async () => {
       try {
         const response = await axios(`${apiUrl}/posts`);
-        console.log("post - useEffect - response", response);
+        // console.log("post - useEffect - response", response);
         setPost(response.data);
       } catch (err) {
         console.error(err);
@@ -26,6 +27,7 @@ const Feed = () => {
     makeApiCall();
   }, []);
 
+    
   
 
   const postArr = post.map((post) => (

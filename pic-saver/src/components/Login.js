@@ -3,12 +3,11 @@ import '../App.css';
 import Header from './Header'
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm'
-import { useHistory } from 'react-router-dom'
 
 function App() {
   const [user, setUser] = useState({})
   const [form, setForm] = useState("")
-  const history = useHistory();
+  
 
   useEffect(() => {
         const token = localStorage.getItem("token")

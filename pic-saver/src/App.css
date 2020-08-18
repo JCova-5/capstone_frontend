@@ -6,7 +6,7 @@ h1 {
   font-size: 2fr;
 }
 
-.feedProfileImage {
+.feedProfileImage, .profile-img {
   width: 10%;
   border-radius: 30px;
 }
