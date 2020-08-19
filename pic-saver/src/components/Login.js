@@ -21,7 +21,7 @@ function App() {
           .then(resp => resp.json())
           .then(data => {
             setUser(data)
-            console.log(data)
+            
           })
         }
       }, [])
@@ -36,7 +36,6 @@ function App() {
 
   
 
-  console.log(user)
 
   const renderForm = () => {
     switch(form){

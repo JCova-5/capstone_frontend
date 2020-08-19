@@ -10,15 +10,15 @@ const Profile = props => {
     const [posts,setPosts]= useState([]);
 
     const makeAPICall = async () => {
-        let posts = null
+        let newPost = null
         try {
           const response = await axios(`${apiUrl}/users/${props.match.params.id}`)
           setUser(response.data)
-          posts = response.data.posts
+          newPost = response.data.posts
         } catch (err) {
           console.error(err)
         }
-        setPosts(posts.reverse())
+        setPosts(newPost.reverse())
       }
     
       useEffect(() => {
@@ -31,7 +31,6 @@ const Profile = props => {
           method: 'DELETE'
         })
         makeAPICall()
-        console.log(id)
       }
 
       
@@ -54,7 +53,13 @@ const Profile = props => {
                 <img className='feedProfileImage' src = {user.profile_img} alt='profile avatar' />   
                 <p>{user.bio}</p>
             </div>
-            {postMap}
+            <div className="feed">
+                <ul className ="feedPost">
+                {postMap}  
+                </ul>
+            </div>
+            
+            
             <Footer/>
         </div>
     )

@@ -1,5 +1,5 @@
 import React  from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 
 
 
@@ -19,7 +19,7 @@ const Nav = () => {
     return (
         <nav>
             <NavLink className="navLink" to='/home'>Home</NavLink>
-            <Link className="navLink"><span onClick={()=>userProf(document.cookie)}>Profile</span></Link>
+            <span className="prof" onClick={()=>userProf(document.cookie)}>Profile</span>
             {localStorage.length > 0 ? <NavLink className="navLink" to='/' onClick={signOut}>sign out</NavLink> : <NavLink to='/'>Sign In</NavLink>}
         </nav>
     )

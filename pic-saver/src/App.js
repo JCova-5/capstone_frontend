@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="mainHeader">Pic Saver</h1>
+      <h1 className="mainHeader">MyPic</h1>
       <Switch>
         <Route exact path='/' component={Login} />
         <Route exact path='/home' component={Feed} />

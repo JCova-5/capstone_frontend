@@ -8,7 +8,6 @@ import Footer from "./Footer";
 
 
 const Feed = () => {
-  console.log('post')
   const [post, setPost] = useState([]);
 
   
@@ -18,7 +17,6 @@ const Feed = () => {
     const makeApiCall = async () => {
       try {
         const response = await axios(`${apiUrl}/posts`);
-        // console.log("post - useEffect - response", response);
         setPost(response.data.reverse());
       } catch (err) {
         console.error(err);

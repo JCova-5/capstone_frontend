@@ -33,13 +33,11 @@ function LogInForm(props){
           .then(resp => resp.json())
           .then(data => {
             setUser(data)
-            // console.log(data)
           })
         }
       }, [])
 
     const handleSubmit = (evt) => {
-        console.log('login form handlesubmit')
         evt.preventDefault()
         fetch(`${apiUrl}/users/login`, {
             method: "POST",
@@ -55,11 +53,12 @@ function LogInForm(props){
         .then(resp => resp.json())
         .then(data => {
             document.cookie = data.user.id
-            console.log("res",data)
             localStorage.setItem('token', data.token)
             handleLogin(data.user)
-            console.log(localStorage)
             history.push('/home')
+            
+            
+
         })
         setUsername("")
         setPassword("")
